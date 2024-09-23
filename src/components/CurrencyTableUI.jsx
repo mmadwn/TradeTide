@@ -1,8 +1,16 @@
 import PropTypes from 'prop-types';
 
 const CurrencyTableUI = ({ rates, error, loading }) => {
-    if (loading) return <div className="text-center text-lg text-white">Loading...</div>; // Loading message
-    if (error) return <div className="text-red-300 text-center">Error: {error}</div>; // Error message
+    if (loading) return (
+        <div className="flex items-center justify-center min-h-screen bg-darkBackground"> {/* Centering the loading message */}
+            <div className="text-center text-lg text-white">Loading data, please wait...</div>
+        </div>
+    ); // Updated loading message with background
+    if (error) return (
+        <div className="flex items-center justify-center min-h-screen bg-darkBackground"> {/* Centering the error message */}
+            <div className="text-red-500 text-center font-bold">Error: {error}</div>
+        </div>
+    ); // Updated error message with background
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-darkBackground"> {/* Centering the table */}
