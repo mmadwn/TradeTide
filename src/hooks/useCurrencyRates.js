@@ -10,7 +10,6 @@ const useCurrencyRates = (apiKey) => {
             setLoading(true); // Set loading to true before fetching
             try {
                 const response = await fetch(`https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${apiKey}`);
-                if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
                 const currencies = ['CAD', 'IDR', 'JPY', 'CHF', 'EUR', 'GBP', 'USD'];
                 const ratesData = currencies.map(currency => ({
