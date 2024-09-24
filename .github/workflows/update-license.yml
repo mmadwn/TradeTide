@@ -20,10 +20,26 @@ jobs:
           current_year=$(date +'%Y')
           sed -i "s/Copyright (c) [0-9]\{4\}/Copyright (c) $current_year/" LICENSE
 
-      - name: Commit changes
+      - name: Check for changes
+        id: changes
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changes=true" >> $GITHUB_ENV
+          else
+            echo "changes=false" >> $GITHUB_ENV
+          fi
+
+      - name: Commit changes
+        if: env.changes == 'true'
+        run: |
+          git config --global user.name 'mmadwn@Github-Actions-Bot'
+          git config --global user.email 'github-actions-bot@mmadwn.github.io'
           git add LICENSE
           git commit -m "Update license year to $current_year"
-          git push
+
+      - name: Push changes
+        if: env.changes == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/mmadwn/TradeTide.git
