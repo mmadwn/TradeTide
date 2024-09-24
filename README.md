@@ -2,6 +2,16 @@
 
 TradeTide is a React application that displays real-time currency exchange rates using the CurrencyFreaks API. It provides a user-friendly interface to view and compare exchange rates for various currencies.
 
+## Features
+
+- Real-time currency exchange rates
+- User-friendly interface
+- Comparison of various currencies
+
+## Demo
+
+![TradeTide Demo](https://github.com/mmadwn/TradeTide/blob/main/tradetide.gif)
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -58,7 +68,3 @@ Contributions are welcome! If you would like to contribute to this project, plea
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Demo
-
-![TradeTide Demo](https://github.com/mmadwn/TradeTide/blob/main/tradetide.gif)
