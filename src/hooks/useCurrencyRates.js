@@ -12,10 +12,14 @@ const useCurrencyRates = (apiKey) => {
                 const response = await fetch(`https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${apiKey}`);
                 const data = await response.json();
                 const currencies = ['CAD', 'IDR', 'JPY', 'CHF', 'EUR', 'GBP', 'USD'];
+                // console.log(data.rates['USD'], "<---USD")
+                // console.log(data.rates['IDR'], "<---IDR")
                 const ratesData = currencies.map(currency => ({
                     currency,
-                    buy: (data.rates[currency] / data.rates['USD']).toFixed(4),
-                    sell: (data.rates[currency] / data.rates['USD'] * 1.01).toFixed(4),
+                    buy: (data.rates[currency] / data.rates['USD'] * 1.01).toFixed(4), // Buy rate with markup
+                    dollarCurrency: parseFloat(data.rates[currency]).toFixed(4),
+                    sell: (data.rates[currency] / data.rates['USD'] * 0.99).toFixed(4), // Sell rate with discount
+                
                 }));
                 setRates(ratesData);
             } catch (error) {

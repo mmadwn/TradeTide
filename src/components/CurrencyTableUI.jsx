@@ -35,7 +35,7 @@ const CurrencyTableUI = ({ rates, error, loading, isDarkTheme }) => {
                             <tr key={rate.currency}>
                                 <td className="py-2 px-4 text-left">{rate.currency}</td> {/* Align text to the left */}
                                 <td className="py-2 px-4 text-left">{rate.buy}</td>
-                                <td className="py-2 px-4 text-left">{(1 / rate.buy).toFixed(4)}</td> 
+                                <td className="py-2 px-4 text-left">{rate.dollarCurrency}</td> 
                                 <td className="py-2 px-4 text-left">{rate.sell}</td>
                             </tr>
                         ))}
